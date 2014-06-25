@@ -36,16 +36,25 @@ module.exports = function(grunt) {
         }, jshint_common_options),
         src: ['client/js/src/**/*.js']
       }
+    },
+    mochaTest: {
+      test: {
+        options: {
+          reporter: 'spec'
+        },
+        src: ['test/**/*.js']
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-mocha-test');
 
   grunt.registerTask('default', 
     ['server', 'client']);
 
   grunt.registerTask('server',
-    ['jshint:server']);
+    ['jshint:server', 'mochaTest']);
 
   grunt.registerTask('client',
     ['jshint:client']);
