@@ -20,6 +20,12 @@ module.exports = function (app, passport) {
     });
   });
 
+  app.get('/logout', function (req, res) {
+    req.logout();
+    res.redirect('/');
+  });
+
+
   app.post('/login', passport.authenticate('login', {
     successRedirect: '/challenge',
     failureRedirect: '/'
@@ -29,11 +35,6 @@ module.exports = function (app, passport) {
     successRedirect: '/challenge',
     failureRedirect: '/signup'
   }));
-
-  app.get('/logout', function (req, res) {
-    req.logout();
-    res.redirect('/');
-  });
 
 };
 
