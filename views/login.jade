@@ -6,12 +6,12 @@ html(lang="en")
   body
     div#container
       h2= "Javascript Programming Contest"
-      div#message= message
-      form.loginform(action="/login", method="post")
+      div= message
+      form(action="/login", method="post")
         input(type="text", name="username", placeholder="Username")
         br
         input(type="password", name="password", placeholder="Password")
         br
-        span.registeruser
+        span
           a(href="/signup")= "Register new user"
         button(type="submit")= "Log in"

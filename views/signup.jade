@@ -6,9 +6,11 @@ html(lang="en")
   body
     div#container
       h2= "Javascript Programming Contest"
-      form.signupform(action="/signup", method="post")
+      form(action="/signup", method="post")
         input(type="text", name="username", placeholder="Username")
         br
         input(type="password", name="password", placeholder="Password")
         br
+        span
+          a(href="/")= "Go to login"
         button(type="submit")= "Sign up"
