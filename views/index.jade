@@ -4,4 +4,10 @@ html(lang="en")
     title= "Javascript Programming Contest"
   body
     h2= "Javascript Programming Contest"
-    div#container
+    div#login
+      form.loginform(action="/login", method="post")
+        input(type="text", name="username", placeholder="Username")
+        br
+        input(type="password", name="password", placeholder="Password")
+        br
+        button(type="submit")= "Log in"
