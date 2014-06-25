@@ -1,0 +1,14 @@
+doctype html
+html(lang="en")
+  head
+    title= "Javascript Programming Contest"
+
+  body
+    div#container
+      h2= "Javascript Programming Contest"
+      form.signupform(action="/signup", method="post")
+        input(type="text", name="username", placeholder="Username")
+        br
+        input(type="password", name="password", placeholder="Password")
+        br
+        button(type="submit")= "Sign up"

@@ -22,6 +22,7 @@ module.exports = function(passport) {
       }
 
       if (user) {
+        console.log("User already exists!");
         return done(null, false, "User already exists!");
       }
 
@@ -54,11 +55,13 @@ module.exports = function(passport) {
           if (valid) {
             return done(null, user);
           }
+          console.log("Invalid password!");
           return done(null, false, "Invalid Password!");
         });
+      } else {
+        console.log("User does not exist!");
+        return done(null, false, "User does not exist!");  
       }
-
-      return done(null, false, "User does not exist!");
 
     });
   }));
