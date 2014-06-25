@@ -4,6 +4,7 @@ html(lang="en")
     title= "Javascript Programming Contest"
   body
     h2= "Javascript Programming Contest"
+    div#message= message
     div#login
       form.loginform(action="/login", method="post")
         input(type="text", name="username", placeholder="Username")
