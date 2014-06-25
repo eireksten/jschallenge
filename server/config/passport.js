@@ -1,9 +1,7 @@
-// config/passport.js
+"use strict";
 
-// load all the things we need
 var LocalStrategy   = require('passport-local').Strategy;
 
-// expose this function to our app using module.exports
 module.exports = function(passport) {
 
   passport.serializeUser(function(user, done) {

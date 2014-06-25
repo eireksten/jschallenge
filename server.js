@@ -2,6 +2,7 @@
 
 var express = require('express');
 var passport = require('passport');
+var mongoose = require('mongoose');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -12,7 +13,11 @@ var routes = require('./server/routes.js');
 var app = express();
 var port = process.env.PORT || 1337;
 
-require('./server/config/passport.js')(passport);
+var passconfig = require('./server/config/passport.js');
+var dbconfig = require('./server/config/database.js');
+
+passconfig(passport);
+mongoose.connect(dbconfig.url);
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
