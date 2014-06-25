@@ -11,7 +11,9 @@ module.exports = function (app, passport) {
   })
 
   app.get('/challenge', isLoggedIn, function (req, res) {
-    res.render('challenge');
+    res.render('challenge', {
+      user: req.user
+    });
   });
 
   app.post('/login', passport.authenticate('login', {
@@ -23,6 +25,11 @@ module.exports = function (app, passport) {
     successRedirect: '/challenge',
     failureRedirect: '/'
   }));
+
+  app.get('/logout', function (req, res) {
+    req.logout();
+    res.redirect('/');
+  });
 
 };
 
