@@ -15,15 +15,17 @@ module.exports = function(passport) {
     });
   });
 
-  passport.use('signup', new LocalStrategy(function (username, password, done) {
+  passport.use('signup', new LocalStrategy({
+    passReqToCallback: true
+  },
+  function (req, username, password, done) {
     User.findOne({username: username}, function (err, user) {
       if (err) {
         return done(err);
       }
 
       if (user) {
-        console.log("User already exists!");
-        return done(null, false, "User already exists!");
+        return done(null, false, req.flash('signupmessage', "User already exists!"));
       }
 
       var newuser = new User();
@@ -42,7 +44,10 @@ module.exports = function(passport) {
     });
   }));
 
-  passport.use('login', new LocalStrategy(function(username, password, done) {
+  passport.use('login', new LocalStrategy({
+    passReqToCallback: true
+  },
+  function(req, username, password, done) {
 
     User.findOne({username: username}, function (err, user) {
       if (err) {
@@ -55,12 +60,10 @@ module.exports = function(passport) {
           if (valid) {
             return done(null, user);
           }
-          console.log("Invalid password!");
-          return done(null, false, "Invalid Password!");
+          return done(null, false, req.flash('loginmessage', "Invalid Password!"));
         });
       } else {
-        console.log("User does not exist!");
-        return done(null, false, "User does not exist!");  
+        return done(null, false, req.flash('loginmessage', "User does not exist!"));  
       }
 
     });

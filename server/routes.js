@@ -3,12 +3,16 @@
 module.exports = function (app, passport) {
 
   app.get('/', function (req, res) {
-    res.render('login');
+    res.render('login', {
+      message: req.flash('loginmessage')
+    });
   });
 
   app.get('/signup', function (req, res) {
-    res.render('signup');
-  })
+    res.render('signup', {
+      message: req.flash('signupmessage')
+    });
+  });
 
   app.get('/challenge', isLoggedIn, function (req, res) {
     res.render('challenge', {
@@ -23,7 +27,7 @@ module.exports = function (app, passport) {
 
   app.post('/signup', passport.authenticate('signup', {
     successRedirect: '/challenge',
-    failureRedirect: '/'
+    failureRedirect: '/signup'
   }));
 
   app.get('/logout', function (req, res) {

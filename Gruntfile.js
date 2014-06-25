@@ -7,7 +7,7 @@ var jshint_common_options = {
   unused: true,
   strict: true,
   trailing: true,
-  maxparams: 3,
+  maxparams: 5,
   noempty: true,
   newcap: true,
   indent: 2,

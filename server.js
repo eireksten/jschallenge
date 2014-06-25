@@ -7,6 +7,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var flash = require('connect-flash');
 
 var routes = require('./server/routes.js');
 
@@ -28,6 +29,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(session({secret: 'sjokoladepudding'}));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 routes(app, passport);
 
