@@ -10,7 +10,12 @@ module.exports = function (app, passport) {
     res.render('challenge');
   });
 
-  app.post('/login', passport.authenticate('local', {
+  app.post('/login', passport.authenticate('login', {
+    successRedirect: '/challenge',
+    failureRedirect: '/'
+  }));
+
+  app.post('/signup', passport.authenticate('signup', {
     successRedirect: '/challenge',
     failureRedirect: '/'
   }));

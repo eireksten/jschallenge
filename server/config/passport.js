@@ -15,25 +15,15 @@ module.exports = function(passport) {
     });
   });
 
-  passport.use(new LocalStrategy(function(username, password, done) {
-
+  passport.use('signup', new LocalStrategy(function (username, password, done) {
     User.findOne({username: username}, function (err, user) {
       if (err) {
         return done(err);
       }
 
       if (user) {
-        // Validate user
-        user.isValidPassword(password, function (err, valid) {
-          if (err)return done(err);
-          if (valid) {
-            return done(null, user);
-          }
-          return done(null, false, "Invalid Password");
-        });
+        return done(null, false, "User already exists!");
       }
-
-      // Register user
 
       var newuser = new User();
 
@@ -48,6 +38,28 @@ module.exports = function(passport) {
         });
 
       });
+    });
+  }));
+
+  passport.use('login', new LocalStrategy(function(username, password, done) {
+
+    User.findOne({username: username}, function (err, user) {
+      if (err) {
+        return done(err);
+      }
+
+      if (user) {
+        user.isValidPassword(password, function (err, valid) {
+          if (err)return done(err);
+          if (valid) {
+            return done(null, user);
+          }
+          return done(null, false, "Invalid Password!");
+        });
+      }
+
+      return done(null, false, "User does not exist!");
+
     });
   }));
 
