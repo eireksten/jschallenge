@@ -12,7 +12,9 @@ challenge.problemview = (function (codemirror) {
     render: function () {
       this.$el.empty().html(challenge.templates.problem({
         title: this.model.getTitle(),
-        description: this.model.getDescription()
+        description: this.model.getDescription(),
+        precode: this.model.getSolutionStart(),
+        postcode: this.model.getSolutionEnd()
       }));
 
       this.$el.find('.editor').each(function () {
@@ -30,7 +32,7 @@ challenge.problemview = (function (codemirror) {
   var createView = function (model) {
     var view = Object.create(baseview);
 
-    view.$el = $('<div class="problemview">');
+    view.$el = $('<section class="problemview">');
     view.el = view.$el.get(0);
 
     view.init(model);

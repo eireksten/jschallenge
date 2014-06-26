@@ -10,13 +10,13 @@ html(lang="en")
     script(type="text/javascript", src="js/src.js")
 
   body
-    div.container(role="main")
+    section.container(role="main")
       section.header
-        h2= "Javascript Programming Challenge"
-      aside.profileinfo
-        p 
-          | Logged in as #{user.username} (
-          a(href="/logout") log out
-          | )
+        section.headertitle
+          h2 Javascript Programming Challenge
+        aside.profileinfo
+          p 
+            | Logged in as #{user.username} (
+            a(href="/logout") log out
+            | )
       section#challenge
-        p Welcome to the JavaScript Challenge!
