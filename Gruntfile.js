@@ -1,5 +1,9 @@
 var _ = require('lodash');
 
+var clientlibraries = [
+  'client/bower_components/zepto/zepto.min.js'
+];
+
 var jshint_common_options = {
   eqeqeq: true,
   latedef: 'nofunc',
@@ -44,11 +48,27 @@ module.exports = function(grunt) {
         },
         src: ['test/**/*.js']
       }
+    },
+    concat: {
+      libs: {
+        src: clientlibraries,
+        dest: 'client/js/libs.js'  
+      }
+    },
+    karma: {
+      unit: {
+        configFile: 'karma.conf.js',
+        singleRun: true,
+        browsers: ['PhantomJS']
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-mocha-test');
+  grunt.loadNpmTasks('grunt-karma');
+  grunt.loadNpmTasks('grunt-contrib-concat');
+
 
   grunt.registerTask('default', 
     ['server', 'client']);
@@ -57,5 +77,5 @@ module.exports = function(grunt) {
     ['jshint:server', 'mochaTest']);
 
   grunt.registerTask('client',
-    ['jshint:client']);
+    ['jshint:client', 'concat:libs', 'karma']);
 };
