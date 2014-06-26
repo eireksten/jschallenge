@@ -24,6 +24,16 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    watch: {
+      clientscripts: {
+        files: ['client/js/src/*.js'],
+        tasks: ['jshint:client', 'uglify:src']
+      },
+      templates: {
+        files: ['client/templates/**/*.hbs'],
+        tasks: ['handlebars']
+      }
+    },
     jshint: {
       server: {
         options: _.assign({
@@ -96,6 +106,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-handlebars');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
 
   grunt.registerTask('default', 
