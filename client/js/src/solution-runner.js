@@ -29,7 +29,7 @@ var solutionrunner = (function () {
 
     run: function (callback) {
       var runnerworker = makeWorker('self.addEventListener("message",function(event){try{self.postMessage({output:eval(event.data.solution)()});}finally{self.close()}})'),
-      // var runnerworker = new Worker('judge-worker.js'),
+      // var runnerworker = new Worker('webworkers/judge-worker.js'),
           timeout = setTimeout(function () {
             runnerworker.terminate(runnerworker);
             callback("The solution timed out.");
