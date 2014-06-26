@@ -15,7 +15,7 @@ var problem = (function () {
       this.tests().push(test);
     },
     getTest: function (index) {
-      return this.tests()[index]
+      return this.tests()[index];
     },
     removeTest: function (test) {
       this.tests(_.without(this.tests(), test));
