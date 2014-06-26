@@ -2,7 +2,8 @@ var _ = require('lodash');
 
 var clientlibraries = [
   'client/bower_components/zepto/zepto.min.js',
-  'client/bower_components/lodash/dist/lodash.min.js'
+  'client/bower_components/lodash/dist/lodash.min.js',
+  'client/bower_components/handlebars/handlebars.min.js'
 ];
 
 var jshint_common_options = {
@@ -74,6 +75,18 @@ module.exports = function(grunt) {
         singleRun: true,
         browsers: ['Chrome']
       }
+    },
+    handlebars: {
+      options: {
+        namespace: 'challenge.templates',
+        processName: function (filepath) {
+          return filepath.substring(filepath.lastIndexOf('/') + 1, filepath.lastIndexOf('.'));
+        }
+      },
+      build: {
+        src: ['client/templates/*.hbs'],
+        dest: 'client/js/templates.js'
+      }
     }
   });
 
@@ -82,6 +95,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-handlebars');
 
 
   grunt.registerTask('default', 
@@ -91,5 +105,5 @@ module.exports = function(grunt) {
     ['jshint:server', 'mochaTest']);
 
   grunt.registerTask('client',
-    ['jshint:client', 'concat:libs', 'karma', 'uglify']);
+    ['jshint:client', 'concat:libs', 'karma', 'uglify', 'handlebars']);
 };
