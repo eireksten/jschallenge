@@ -1,14 +1,14 @@
 var _ = require('lodash');
 
 var clientlibraries = [
-  'client/bower_components/zepto/zepto.min.js'
+  'client/bower_components/zepto/zepto.min.js',
+  'client/bower_components/lodash/dist/lodash.min.js'
 ];
 
 var jshint_common_options = {
   eqeqeq: true,
   latedef: 'nofunc',
   undef: true,
-  unused: true,
   strict: true,
   trailing: true,
   maxparams: 5,
@@ -35,7 +35,8 @@ module.exports = function(grunt) {
           browser: true,
           globals: {
             Zepto: true,
-            $: true
+            $: true,
+            _: true
           }
         }, jshint_common_options),
         src: ['client/js/src/**/*.js']
