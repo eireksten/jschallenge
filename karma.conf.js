@@ -17,6 +17,7 @@ module.exports = function(config) {
     files: [
       'client/bower_components/chai/chai.js',
       'client/js/libs.js',
+      'client/js/templates.js',
       'client/js/src/**/*.js',
       'client/js/test/**/*.js'
     ],
