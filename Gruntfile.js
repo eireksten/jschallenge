@@ -25,13 +25,17 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     watch: {
-      clientscripts: {
+      scripts: {
         files: ['client/js/src/*.js'],
         tasks: ['jshint:client', 'uglify:src']
       },
       templates: {
         files: ['client/templates/**/*.hbs'],
         tasks: ['handlebars']
+      },
+      style: {
+        files: ['client/css/src/**/*.less'],
+        tasks: ['less']
       }
     },
     jshint: {
@@ -97,6 +101,12 @@ module.exports = function(grunt) {
         src: ['client/templates/*.hbs'],
         dest: 'client/js/templates.js'
       }
+    },
+    less: {
+      options: {
+        compress: true
+      },
+      'client/css/style.css': ['client/css/src/**/*.less'],
     }
   });
 
@@ -107,6 +117,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-handlebars');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-less');
 
 
   grunt.registerTask('default', 
@@ -116,5 +127,5 @@ module.exports = function(grunt) {
     ['jshint:server', 'mochaTest']);
 
   grunt.registerTask('client',
-    ['jshint:client', 'concat:libs', 'karma', 'uglify', 'handlebars']);
+    ['jshint:client', 'concat:libs', 'karma', 'uglify', 'handlebars', 'less']);
 };

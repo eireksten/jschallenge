@@ -1,14 +1,20 @@
 doctype html
 html(lang="en")
   head
-    title= "Javascript Programming Contest"
+    title= "Javascript Programming Challenge"
+    link(rel="stylesheet", type="text/css", href="css/style.css")
     script(type="text/javascript", src="js/libs.js")
     script(type="text/javascript", src="js/templates.js")
     script(type="text/javascript", src="js/src.js")
 
   body
-    h2= "Javascript Programming Contest"
-    div#challenge
-      p= "Welcome to the JavaScript Challenge!"
-      p You are logged in as #{user.username}
-      a(href="/logout") Log out
+    div.container(role="main")
+      section.header
+        h2= "Javascript Programming Challenge"
+      aside.profileinfo
+        p 
+          | Logged in as #{user.username} (
+          a(href="/logout") log out
+          | )
+      section#challenge
+        p Welcome to the JavaScript Challenge!
