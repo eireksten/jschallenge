@@ -13,7 +13,7 @@ describe('problem', function () {
         parameters: ['x', 'y']
       });
       expect(prob.getTitle()).to.equal('Addition');
-      expect(prob.getProblemDescription()).to.equal('Add two numbers');
+      expect(prob.getDescription()).to.equal('Add two numbers');
       expect(prob.getFunctionName()).to.equal('addThem');
       expect(prob.getParameterlist()).to.deep.equal(['x', 'y']);
 
@@ -22,7 +22,7 @@ describe('problem', function () {
     it('should define default options', function () {
       var prob = problem.create();
       expect(prob.getTitle()).to.equal('Mysterious Problem');
-      expect(prob.getProblemDescription()).to.equal('No description!');
+      expect(prob.getDescription()).to.equal('No description!');
       expect(prob.getFunctionName()).to.equal('solve');
       expect(prob.getParameterlist()).to.deep.equal([]);
     });

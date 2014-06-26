@@ -40,7 +40,7 @@ challenge.problem = (function () {
       getTitle: function () {
         return args.title;
       },
-      getProblemDescription: function () {
+      getDescription: function () {
         return args.description;
       },
       getFunctionName: function () {
