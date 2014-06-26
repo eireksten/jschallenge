@@ -1,6 +1,8 @@
 describe('solution-runner', function () {
 
-  var expect = chai.expect;
+  var expect = chai.expect,
+      solutionrunner = challenge.solutionrunner,
+      problem = challenge.problem;
 
   describe('create solution', function () {
     it('should set problem reference', function () {

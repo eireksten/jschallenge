@@ -8,12 +8,12 @@ var clientlibraries = [
 var jshint_common_options = {
   eqeqeq: true,
   latedef: 'nofunc',
+  nonew: true,
   undef: true,
   strict: true,
   trailing: true,
   maxparams: 5,
   noempty: true,
-  newcap: true,
   indent: 2,
   immed: true,
   forin: true
@@ -56,6 +56,18 @@ module.exports = function(grunt) {
         dest: 'client/js/libs.js'  
       }
     },
+    uglify: {
+      src: {
+        options: {
+          banner: '/*! <%= pkg.name %> by eireksten */',
+          sourceMap: true,
+          sourceMapName: 'client/js/src.map',
+          compress: true
+        },
+        src: ['client/js/src/*.js'],
+        dest: 'client/js/src.js'
+      }
+    },
     karma: {
       unit: {
         configFile: 'karma.conf.js',
@@ -69,6 +81,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
 
 
   grunt.registerTask('default', 
@@ -78,5 +91,5 @@ module.exports = function(grunt) {
     ['jshint:server', 'mochaTest']);
 
   grunt.registerTask('client',
-    ['jshint:client', 'concat:libs', 'karma']);
+    ['jshint:client', 'concat:libs', 'karma', 'uglify']);
 };

@@ -1,4 +1,6 @@
-var solutionrunner = (function () {
+var challenge = challenge || {};
+
+challenge.solutionrunner = (function () {
   "use strict";
 
   function makeWorker(script) {

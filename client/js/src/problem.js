@@ -1,4 +1,6 @@
-var problem = (function () {
+var challenge = challenge || {};
+
+challenge.problem = (function () {
   "use strict";
 
   var baseproblem = {
