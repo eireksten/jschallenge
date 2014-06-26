@@ -44,4 +44,63 @@ describe('problem', function () {
 
   });
 
+  describe('defining test cases', function () {
+    var prob,
+        addTest = function (a, b) {
+          prob.addTest({
+            args: [a, b],
+            expected: a + b
+          });
+
+        };
+
+    beforeEach(function () {
+      prob = problem.create({
+        title: 'Addition',
+        description: 'Add two numbers',
+        func: 'addThem',
+        parameters: ['x', 'y']
+      });
+    });
+
+
+
+    it('should add defined test cases', function () {
+
+      addTest(2, 3);
+      expect(prob.testCount()).to.equal(1);
+      addTest(0, -3);
+      expect(prob.testCount()).to.equal(2);
+
+      expect(prob.getTest(0)).to.deep.equal({
+        args: [2, 3],
+        expected: 5
+      });
+
+      expect(prob.getTest(1)).to.deep.equal({
+        args: [0, -3],
+        expected: -3
+      });
+
+    });
+
+    it('should remove test', function () {
+      var testtoremove = {
+        args: [19, -22],
+        expected: -3
+      };
+      addTest(2, 6);
+      addTest(1, 8);
+      prob.addTest(testtoremove);
+      addTest(1, 1);
+
+      expect(prob.tests()).to.include.members([testtoremove]);
+      prob.removeTest(testtoremove);
+      expect(prob.tests()).to.not.include.members([testtoremove]);
+
+
+    })
+
+  });
+
 });
