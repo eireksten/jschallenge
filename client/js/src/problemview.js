@@ -1,6 +1,8 @@
+/*global CodeMirror */
+
 var challenge = challenge || {};
 
-challenge.problemview = (function () {
+challenge.problemview = (function (codemirror) {
   "use strict";
 
   var baseview = {
@@ -12,6 +14,16 @@ challenge.problemview = (function () {
         title: this.model.getTitle(),
         description: this.model.getDescription()
       }));
+
+      this.$el.find('.editor').each(function () {
+        codemirror(this, {
+          value: "function myScript(){return 100;}\n",
+          mode:  "javascript",
+          theme: "solarized light",
+          lineNumbers: true
+        });  
+      });
+
     }
   };
 
@@ -22,7 +34,6 @@ challenge.problemview = (function () {
     view.el = view.$el.get(0);
 
     view.init(model);
-    view.render();
 
     return view;
 
@@ -32,4 +43,4 @@ challenge.problemview = (function () {
     create: createView
   };
 
-}());
+}(CodeMirror));

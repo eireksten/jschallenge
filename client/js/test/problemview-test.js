@@ -17,6 +17,7 @@ describe('problemview', function () {
 
     it('should contain a problem title and description', function () {
       var view = problemview.create(prob);
+      view.render();
 
       expect(view.$el.find('.title').text()).to.equal(prob.getTitle());
       expect(view.$el.find('.description').text()).to.equal(prob.getDescription());

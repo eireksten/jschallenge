@@ -3,7 +3,9 @@ var _ = require('lodash');
 var clientlibraries = [
   'client/bower_components/zepto/zepto.min.js',
   'client/bower_components/lodash/dist/lodash.min.js',
-  'client/bower_components/handlebars/handlebars.min.js'
+  'client/bower_components/handlebars/handlebars.min.js',
+  'client/bower_components/codemirror/lib/codemirror.js',
+  'client/bower_components/codemirror/mode/javascript/javascript.js'
 ];
 
 var jshint_common_options = {

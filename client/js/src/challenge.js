@@ -9,9 +9,9 @@ Zepto(function () {
     func: "addThem",
     parameters: ['x', 'y']
   });
-  
+
   var problemview = challenge.problemview.create(problem);
-  var $container = $('#challenge');
-  $container.append(problemview.$el);
+  $('#challenge').append(problemview.$el);
+  problemview.render();
 
 });
