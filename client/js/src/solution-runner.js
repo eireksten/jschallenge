@@ -1,6 +1,14 @@
 var solutionrunner = (function () {
   "use strict";
 
+  function makeWorker(script) {
+    var URL = window.URL || window.webkitURL;
+    
+    var blob = new Blob([script]);
+    var worker = new Worker(URL.createObjectURL(blob));
+    return worker;
+  }
+
   var baserunner = {
     getProblem: function () {
       return this.prob;
@@ -12,7 +20,45 @@ var solutionrunner = (function () {
 
     createSolutionString: function (userinput) {
       userinput = userinput || this.sol;
-      return this.prob.getSolutionStart() + userinput + this.prob.getSolutionEnd();
+      return '(function (' +
+        this.prob.getParameterlist().join(', ') +
+        ') {' +
+        userinput +
+        '})';
+    },
+
+    run: function (callback) {
+      var runnerworker = makeWorker('self.addEventListener("message",function(event){try{self.postMessage({output:eval(event.data.solution)()});}finally{self.close()}})'),
+      // var runnerworker = new Worker('judge-worker.js'),
+          timeout = setTimeout(function () {
+            runnerworker.terminate(runnerworker);
+            callback("The solution timed out.");
+          }, 1000);
+
+      runnerworker.addEventListener('message', this.handleWorkerResult.bind(this, callback, timeout));
+      runnerworker.addEventListener('error', this.handleWorkerError.bind(this, callback, timeout));
+
+      runnerworker.postMessage({
+        solution: this.createSolutionString()
+      });
+      
+    },
+
+    handleWorkerResult: function (callback, timeout, event) {
+      var output = event.data.output;
+
+      callback(null, output);
+
+      clearTimeout(timeout);
+
+    },
+
+    handleWorkerError: function (callback, timeout, event) {
+      event.preventDefault();
+
+      callback(event.message);
+
+      clearTimeout(timeout);
     }
 
   };
@@ -20,7 +66,6 @@ var solutionrunner = (function () {
   var createProblem = function (prob) {
 
     var sr = Object.create(baserunner);
-
     sr.prob = prob;
     return sr;
 
