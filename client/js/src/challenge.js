@@ -6,7 +6,7 @@ Zepto(function () {
   var models = challenge.model;
   var views = challenge.view;
 
-  var problem = models.problem.create({
+  var problem = models.problemspec.create({
     title: "Addition",
     description: "Add two numbers",
     func: "addThem",
