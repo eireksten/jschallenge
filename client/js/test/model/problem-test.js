@@ -1,12 +1,12 @@
-describe('problem', function () {
+describe('problemspec', function () {
 
   var expect = chai.expect,
-      problem = challenge.model.problem;
+      spec = challenge.model.problemspec;
 
   describe('create problem', function () {
 
     it('should set given parameters', function () {
-      var prob = problem.create({
+      var prob = spec.create({
         title: 'Addition',
         description: 'Add two numbers',
         func: 'addThem',
@@ -20,7 +20,7 @@ describe('problem', function () {
     });
 
     it('should define default options', function () {
-      var prob = problem.create();
+      var prob = spec.create();
       expect(prob.getTitle()).to.equal('Mysterious Problem');
       expect(prob.getDescription()).to.equal('No description!');
       expect(prob.getFunctionName()).to.equal('solve');
@@ -32,75 +32,16 @@ describe('problem', function () {
   describe('solution string', function () {
 
     it('should set correct end string', function () {
-      expect(problem.create().getSolutionEnd()).to.equal('}');
+      expect(spec.create().getSolutionEnd()).to.equal('}');
     });
 
     it('should use function name in solution start', function () {
-      expect(problem.create({func: 'add'}).getSolutionStart()).to.equal('function add() {');
+      expect(spec.create({func: 'add'}).getSolutionStart()).to.equal('function add() {');
     });
 
     it('should set correct parameters in solution start', function () {
-      expect(problem.create({parameters: ['x', 'y']}).getSolutionStart()).to.equal('function solve(x, y) {');
+      expect(spec.create({parameters: ['x', 'y']}).getSolutionStart()).to.equal('function solve(x, y) {');
     });
-
-  });
-
-  describe('defining test cases', function () {
-    var prob,
-        addTest = function (a, b) {
-          prob.addTest({
-            args: [a, b],
-            expected: a + b
-          });
-
-        };
-
-    beforeEach(function () {
-      prob = problem.create({
-        title: 'Addition',
-        description: 'Add two numbers',
-        func: 'addThem',
-        parameters: ['x', 'y']
-      });
-    });
-
-
-
-    it('should add defined test cases', function () {
-
-      addTest(2, 3);
-      expect(prob.testCount()).to.equal(1);
-      addTest(0, -3);
-      expect(prob.testCount()).to.equal(2);
-
-      expect(prob.getTest(0)).to.deep.equal({
-        args: [2, 3],
-        expected: 5
-      });
-
-      expect(prob.getTest(1)).to.deep.equal({
-        args: [0, -3],
-        expected: -3
-      });
-
-    });
-
-    it('should remove test', function () {
-      var testtoremove = {
-        args: [19, -22],
-        expected: -3
-      };
-      addTest(2, 6);
-      addTest(1, 8);
-      prob.addTest(testtoremove);
-      addTest(1, 1);
-
-      expect(prob.tests()).to.include.members([testtoremove]);
-      prob.removeTest(testtoremove);
-      expect(prob.tests()).to.not.include.members([testtoremove]);
-
-
-    })
 
   });
 

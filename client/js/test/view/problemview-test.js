@@ -1,7 +1,7 @@
 describe('problemview', function () {
 
   var expect = chai.expect,
-      problem = challenge.model.problem,
+      spec = challenge.model.problemspec,
       problemview = challenge.view.problemview;
 
   describe('create', function () {
@@ -9,7 +9,7 @@ describe('problemview', function () {
     var prob;
 
     beforeEach(function () {
-      prob = problem.create({
+      prob = spec.create({
 
       });
     });

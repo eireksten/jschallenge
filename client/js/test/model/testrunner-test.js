@@ -2,11 +2,11 @@ describe('testrunner', function () {
 
   var expect = chai.expect,
       testrunner = challenge.model.testrunner,
-      problem = challenge.model.problem;
+      spec = challenge.model.problemspec;
 
   describe('create solution', function () {
     it('should set problem reference', function () {
-      var prob = problem.create();
+      var prob = spec.create();
       var solrunner = testrunner.create(prob);
 
       expect(solrunner.getProblem()).to.equal(prob);
@@ -16,7 +16,7 @@ describe('testrunner', function () {
   describe('solution string', function () {
 
     it('should build solution from user input', function () {
-      var solrunner = testrunner.create(problem.create());
+      var solrunner = testrunner.create(spec.create());
       solrunner.setSolution('return 4;');
       expect(
         solrunner.createSolutionString()
@@ -24,7 +24,7 @@ describe('testrunner', function () {
     });
 
     it('should override solution when argument is given', function () {
-      var solrunner = testrunner.create(problem.create());
+      var solrunner = testrunner.create(spec.create());
       solrunner.setSolution('return 4;');
       expect(
         solrunner.createSolutionString('return "Hello World";')
@@ -38,7 +38,7 @@ describe('testrunner', function () {
     var prob, solrunner;
 
     beforeEach(function () {
-      prob = problem.create({
+      prob = spec.create({
         title: 'Addition',
         description: 'Add two numbers',
         func: 'addThem',
