@@ -1,7 +1,7 @@
 describe('problem', function () {
 
   var expect = chai.expect,
-      problem = challenge.problem;
+      problem = challenge.model.problem;
 
   describe('create problem', function () {
 

@@ -1,6 +1,7 @@
 var challenge = challenge || {};
+challenge.model = challenge.model || {};
 
-challenge.problem = (function () {
+challenge.model.problem = (function () {
   "use strict";
 
   var baseproblem = {

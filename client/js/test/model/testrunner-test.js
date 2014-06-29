@@ -1,13 +1,13 @@
-describe('solution-runner', function () {
+describe('testrunner', function () {
 
   var expect = chai.expect,
-      solutionrunner = challenge.solutionrunner,
-      problem = challenge.problem;
+      testrunner = challenge.model.testrunner,
+      problem = challenge.model.problem;
 
   describe('create solution', function () {
     it('should set problem reference', function () {
       var prob = problem.create();
-      var solrunner = solutionrunner.create(prob);
+      var solrunner = testrunner.create(prob);
 
       expect(solrunner.getProblem()).to.equal(prob);
     });
@@ -16,7 +16,7 @@ describe('solution-runner', function () {
   describe('solution string', function () {
 
     it('should build solution from user input', function () {
-      var solrunner = solutionrunner.create(problem.create());
+      var solrunner = testrunner.create(problem.create());
       solrunner.setSolution('return 4;');
       expect(
         solrunner.createSolutionString()
@@ -24,7 +24,7 @@ describe('solution-runner', function () {
     });
 
     it('should override solution when argument is given', function () {
-      var solrunner = solutionrunner.create(problem.create());
+      var solrunner = testrunner.create(problem.create());
       solrunner.setSolution('return 4;');
       expect(
         solrunner.createSolutionString('return "Hello World";')
@@ -50,7 +50,7 @@ describe('solution-runner', function () {
         expected: 5
       });
 
-      solrunner = solutionrunner.create(prob);
+      solrunner = testrunner.create(prob);
 
     });
 

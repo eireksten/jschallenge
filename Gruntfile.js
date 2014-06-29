@@ -28,7 +28,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     watch: {
       scripts: {
-        files: ['client/js/src/*.js'],
+        files: ['client/js/src/**/*.js'],
         tasks: ['jshint:client', 'uglify:src']
       },
       templates: {
@@ -56,7 +56,7 @@ module.exports = function(grunt) {
             _: true
           }
         }, jshint_common_options),
-        src: ['client/js/src/**/*.js']
+        src: ['client/js/src/**/*.js', 'client/js/workers/**/*.js']
       }
     },
     mochaTest: {
@@ -81,7 +81,7 @@ module.exports = function(grunt) {
           sourceMapName: 'client/js/src.map',
           compress: true
         },
-        src: ['client/js/src/*.js'],
+        src: ['client/js/src/**/*.js'],
         dest: 'client/js/src.js'
       }
     },

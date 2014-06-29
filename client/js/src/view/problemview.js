@@ -1,8 +1,9 @@
 /*global CodeMirror */
 
 var challenge = challenge || {};
+challenge.view = challenge.view || {};
 
-challenge.problemview = (function (codemirror) {
+challenge.view.problemview = (function (codemirror) {
   "use strict";
 
   var baseview = {

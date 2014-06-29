@@ -1,6 +1,7 @@
 var challenge = challenge || {};
+challenge.model = challenge.model || {};
 
-challenge.solutionrunner = (function () {
+challenge.model.testrunner = (function () {
   "use strict";
 
   function makeWorker(script) {
