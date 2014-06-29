@@ -2,7 +2,7 @@ describe('problemview', function () {
 
   var expect = chai.expect,
       spec = challenge.model.problemspec,
-      problemview = challenge.view.problemview;
+      problemview = challenge.view.problem;
 
   describe('create', function () {
 

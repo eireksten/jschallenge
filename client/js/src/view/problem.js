@@ -3,7 +3,7 @@
 var challenge = challenge || {};
 challenge.view = challenge.view || {};
 
-challenge.view.problemview = (function (codemirror) {
+challenge.view.problem = (function (codemirror) {
   "use strict";
 
   var baseview = {
