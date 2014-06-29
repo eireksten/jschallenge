@@ -1,0 +1,28 @@
+doctype html
+html(lang="en")
+  head
+    title= "JS Challenge"
+    link(rel="stylesheet", type="text/css", href="css/style.css")
+    block styles
+    block scripts
+
+  body
+    section.header
+      section.titlenav
+        section.headertitle
+          h2 JS Challenge
+        aside.nav
+          a(href="#") Challenge
+          a(href="#") High Scores
+          a(href="#") My Profile
+          a(href="#") About
+      aside.profileinfo
+        unless user
+          a(href="/") Log in
+        else
+          | Logged in as #{user.username} (
+          a(href="/logout") log out
+          | )
+    section.container(role="main")
+      
+      block content

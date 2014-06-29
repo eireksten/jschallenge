@@ -1,17 +1,12 @@
-doctype html
-html(lang="en")
-  head
-    title= "Javascript Programming Contest"
+extends layout
 
-  body
-    div#container
-      h2= "Javascript Programming Contest"
-      div= message
-      form(action="/login", method="post")
-        input(type="text", name="username", placeholder="Username")
-        br
-        input(type="password", name="password", placeholder="Password")
-        br
-        span
-          a(href="/signup")= "Register new user"
-        button(type="submit")= "Log in"
+block content
+  div= message
+  form(action="/login", method="post")
+    input(type="text", name="username", placeholder="Username")
+    br
+    input(type="password", name="password", placeholder="Password")
+    br
+    span
+      a(href="/signup")= "Register new user"
+    button(type="submit")= "Log in"

@@ -1,22 +1,13 @@
-doctype html
-html(lang="en")
-  head
-    title= "Javascript Programming Challenge"
-    link(rel="stylesheet", type="text/css", href="bower_components/codemirror/lib/codemirror.css")
-    link(rel="stylesheet", type="text/css", href="bower_components/codemirror/theme/solarized.css")
-    link(rel="stylesheet", type="text/css", href="css/style.css")
-    script(type="text/javascript", src="js/libs.js")
-    script(type="text/javascript", src="js/templates.js")
-    script(type="text/javascript", src="js/src.js")
+extends layout
 
-  body
-    section.container(role="main")
-      section.header
-        section.headertitle
-          h2 Javascript Programming Challenge
-        aside.profileinfo
-          p 
-            | Logged in as #{user.username} (
-            a(href="/logout") log out
-            | )
-      section#challenge
+block styles
+  link(rel="stylesheet", type="text/css", href="bower_components/codemirror/lib/codemirror.css")
+  link(rel="stylesheet", type="text/css", href="bower_components/codemirror/theme/solarized.css")
+
+block scripts  
+  script(type="text/javascript", src="js/libs.js")
+  script(type="text/javascript", src="js/templates.js")
+  script(type="text/javascript", src="js/src.js")
+
+block content
+  section#challenge
