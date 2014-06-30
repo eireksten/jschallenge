@@ -1,0 +1,14 @@
+section.headertitle
+  h2 JS Challenge
+aside.nav
+  a(href="#") Challenge
+  a(href="#") High&nbsp;Scores
+  a(href="#") My&nbsp;Profile
+  a(href="#") About
+aside.profileinfo
+  unless user
+    a(href="/") Log in
+  else
+    | Logged in as #{user.username} (
+    a(href="/logout") log out
+    | )

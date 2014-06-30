@@ -1,9 +1,28 @@
-#challenge {
-  
-  clear:both;
+#content .challenge {
 
-  .editor {
-    border: 1px solid #bbbbbb;
+  width: 100%;
+
+  .problemview {
+
+    display: flex;
+    flex-wrap: wrap;
+
+    .editor {
+      border: 1px solid #bbbbbb;
+    }
+
+    .problemarea {
+      flex: 3;
+      min-width: 300px;
+      margin: 10px;
+    }
+
+    .testarea {
+      flex: 1;
+      min-width: 200px;
+      margin: 10px;
+    }
+
   }
 
 }

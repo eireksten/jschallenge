@@ -14,7 +14,7 @@ Zepto(function () {
   });
 
   var problemview = views.problem.create(problem);
-  $('#challenge').append(problemview.$el);
+  $('.challenge').append(problemview.$el);
   problemview.render();
 
 });

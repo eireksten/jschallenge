@@ -7,22 +7,13 @@ html(lang="en")
     block scripts
 
   body
-    section.header
-      section.titlenav
-        section.headertitle
-          h2 JS Challenge
-        aside.nav
-          a(href="#") Challenge
-          a(href="#") High Scores
-          a(href="#") My Profile
-          a(href="#") About
-      aside.profileinfo
-        unless user
-          a(href="/") Log in
-        else
-          | Logged in as #{user.username} (
-          a(href="/logout") log out
-          | )
-    section.container(role="main")
+    section#container
+      section#header
+        include header
+
+      section#content(role="main")
+        block content
       
-      block content
+      section#footer
+        include footer
+        
