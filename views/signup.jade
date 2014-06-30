@@ -1,5 +1,9 @@
 extends layout
 
+block scripts
+  script(type="text/javascript", src="js/libs.js")
+  script(type="text/javascript", src="js/src.js")
+
 block content
   section.signup
     h4 Register User
@@ -7,6 +11,7 @@ block content
     form(action="/signup", method="post")
       input(type="text", name="username", placeholder="Username", autofocus="autofocus")
       input(type="password", name="password", placeholder="Password")
+      input(type="password", name="passconfirm", placeholder="Confirm Password")
       span
         a(href="/")= "Go to login"
         button(type="submit")= "Sign up"

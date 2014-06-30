@@ -60,10 +60,10 @@ module.exports = function(passport) {
           if (valid) {
             return done(null, user);
           }
-          return done(null, false, req.flash('loginmessage', "Invalid Password!"));
+          return done(null, false, req.flash('loginmessage', "Invalid user name!"));
         });
       } else {
-        return done(null, false, req.flash('loginmessage', "User does not exist!"));  
+        return done(null, false, req.flash('loginmessage', "Invalid user name or password!"));  
       }
 
     });
