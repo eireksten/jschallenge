@@ -2,12 +2,11 @@ extends layout
 
 block content
   section.login
+    h4 Log in
     div.message= message
     form(action="/login", method="post")
       input(type="text", name="username", placeholder="Username")
-      br
       input(type="password", name="password", placeholder="Password")
-      br
       span
-        a(href="/signup")= "Register new user"
-      button(type="submit")= "Log in"
+        a(href="/signup")= "Register"
+        button(type="submit")= "Log in"
