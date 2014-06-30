@@ -4,18 +4,26 @@ module.exports = function (app, passport) {
 
   app.get('/', function (req, res) {
     res.render('login', {
+      user: req.user,
       message: req.flash('loginmessage')
     });
   });
 
   app.get('/signup', function (req, res) {
     res.render('signup', {
+      user: req.user,
       message: req.flash('signupmessage')
     });
   });
 
   app.get('/challenge', isLoggedIn, function (req, res) {
     res.render('challenge', {
+      user: req.user
+    });
+  });
+
+  app.get('/about', function (req, res) {
+    res.render('about', {
       user: req.user
     });
   });
