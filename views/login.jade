@@ -5,7 +5,7 @@ block content
     h4 Log in
     div.message= message
     form(action="/login", method="post")
-      input(type="text", name="username", placeholder="Username")
+      input(type="text", name="username", placeholder="Username", autofocus="autofocus")
       input(type="password", name="password", placeholder="Password")
       span
         a(href="/signup")= "Register"
