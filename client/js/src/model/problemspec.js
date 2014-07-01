@@ -10,35 +10,33 @@ challenge.model.problemspec = (function () {
     },
     getSolutionEnd: function () {
       return '}';
+    },
+    getTitle: function () {
+      return this._attributes.title;
+    },
+    getDescription: function () {
+      return this._attributes.description;
+    },
+    getFunctionName: function () {
+      return this._attributes.func;
+    },
+    getParameterlist: function () {
+      return this._attributes.parameters.slice(0);
     }
   };
 
   var createProblem = function (args) {
 
-    args = _.assign({
+    var prob = Object.create(baseproblem);
+
+    prob._attributes = _.assign({
       title: 'Mysterious Problem',
       description: 'No description!',
       func: 'solve',
       parameters: []
     }, args);
 
-    var prob = Object.create(baseproblem),
-        tests = [];
-
-    return _.assign(prob, {
-      getTitle: function () {
-        return args.title;
-      },
-      getDescription: function () {
-        return args.description;
-      },
-      getFunctionName: function () {
-        return args.func;
-      },
-      getParameterlist: function () {
-        return args.parameters.slice(0);
-      }
-    });
+    return prob;
 
   };
 
