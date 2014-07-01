@@ -25,7 +25,7 @@ challenge.view.exercise = (function () {
       this.views.solution.$el.detach();
       this.views.test.$el.detach();
 
-      this.$el.empty().html(challenge.templates.exerciseview());
+      this.$el.empty().html(challenge.templates.exercise());
 
       this.$el.find('.problemarea').append(this.views.problem.$el);
       this.$el.find('.problemarea').append(this.views.solution.$el);

@@ -11,7 +11,7 @@ challenge.view.solution = (function (codemirror) {
       this.model = model;
     },
     render: function () {
-      this.$el.empty().html(challenge.templates.solutionview({
+      this.$el.empty().html(challenge.templates.solution({
         precode: this.model.problem.getSolutionStart(),
         postcode: this.model.problem.getSolutionEnd(),
       }));

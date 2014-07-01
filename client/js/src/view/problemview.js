@@ -9,7 +9,7 @@ challenge.view.problem = (function () {
       this.model = model;
     },
     render: function () {
-      this.$el.empty().html(challenge.templates.problemview({
+      this.$el.empty().html(challenge.templates.problem({
         title: this.model.getTitle(),
         description: this.model.getDescription()
       }));

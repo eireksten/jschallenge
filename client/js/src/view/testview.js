@@ -9,7 +9,7 @@ challenge.view.test = (function () {
       this.model = model;
     },
     render: function () {
-      this.$el.empty().html(challenge.templates.testview({
+      this.$el.empty().html(challenge.templates.testsuite({
 
       }));
     }
