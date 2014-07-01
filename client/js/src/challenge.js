@@ -11,7 +11,7 @@ Zepto(function () {
 
     var problem = models.problemspec.create({
       title: "Addition",
-      description: "Add two numbers",
+      description: "You are given two numbers as parameters to your function. Return the result of adding them.",
       func: "addThem",
       parameters: ['x', 'y']
     });
