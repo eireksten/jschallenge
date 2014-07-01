@@ -10,18 +10,6 @@ challenge.model.problemspec = (function () {
     },
     getSolutionEnd: function () {
       return '}';
-    },
-    testCount: function () {
-      return this.tests().length;
-    },
-    addTest: function (test) {
-      this.tests().push(test);
-    },
-    getTest: function (index) {
-      return this.tests()[index];
-    },
-    removeTest: function (test) {
-      this.tests(_.without(this.tests(), test));
     }
   };
 
@@ -49,12 +37,6 @@ challenge.model.problemspec = (function () {
       },
       getParameterlist: function () {
         return args.parameters.slice(0);
-      },
-      tests: function (testlist) {
-        if (testlist) {
-          tests = testlist;
-        }
-        return tests;
       }
     });
 
