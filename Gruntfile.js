@@ -129,5 +129,5 @@ module.exports = function(grunt) {
     ['jshint:server', 'mochaTest']);
 
   grunt.registerTask('client',
-    ['jshint:client', 'concat:libs', 'karma', 'uglify', 'handlebars', 'less']);
+    ['jshint:client', 'concat:libs', 'handlebars', 'karma', 'uglify', 'less']);
 };
