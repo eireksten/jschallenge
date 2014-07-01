@@ -16,9 +16,12 @@ Zepto(function () {
       parameters: ['x', 'y']
     });
 
-    var problemview = views.problem.create(problem);
-    $('.challenge').append(problemview.$el);
-    problemview.render();
+    var exerciseview = views.exercise.create({
+      problem: problem
+    });
+    
+    $('.challenge').append(exerciseview.$el);
+    exerciseview.render();
   });
 
   

@@ -2,43 +2,42 @@
 
   width: 100%;
 
-  .problemview {
+  .exercise {
 
     display: flex;
     flex-wrap: wrap;
+
+  }
+
+  .problemarea {
+    flex: 3;
+    min-width: 300px;
+    margin: 10px;
+  }
+
+  .problemtext {
+    margin-bottom: 32px;
+  }
+
+  .solution {
+    border: 1px solid #888;
+    box-shadow: 1px 1px 3px #bbb;
+    padding: 4px;
+
+    code {
+      font-weight: bold;
+    }
 
     .editor {
       border: 1px solid #bbbbbb;
     }
 
-    .problemarea {
-      flex: 3;
-      min-width: 300px;
-      margin: 10px;
+  }
 
-      .problemtext {
-        margin-bottom: 32px;
-      }
-
-      .solution {
-        border: 1px solid #888;
-        box-shadow: 1px 1px 3px #bbb;
-        padding: 4px;
-
-        code {
-          font-weight: bold;
-        }
-
-      }
-
-    }
-
-    .testarea {
-      flex: 1;
-      min-width: 200px;
-      margin: 10px;
-    }
-
+  .testarea {
+    flex: 1;
+    min-width: 200px;
+    margin: 10px;
   }
 
 }

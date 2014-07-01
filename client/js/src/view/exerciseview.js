@@ -9,8 +9,31 @@ challenge.view.exercise = (function () {
   var baseview = {
     init: function (model) {
       this.model = model;
+
+      // Create sub views
+      this.views = {
+        problem: challenge.view.problem.create(model.problem),
+        solution: challenge.view.solution.create({
+          problem: model.problem
+        }),
+        test: challenge.view.test.create(model.test)
+      };
+
     },
     render: function () {
+      this.views.problem.$el.detach();
+      this.views.solution.$el.detach();
+      this.views.test.$el.detach();
+
+      this.$el.empty().html(challenge.templates.exerciseview());
+
+      this.$el.find('.problemarea').append(this.views.problem.$el);
+      this.$el.find('.problemarea').append(this.views.solution.$el);
+      this.$el.find('.testarea').append(this.views.test.$el);
+
+      this.views.problem.render();
+      this.views.solution.render();
+      this.views.test.render();
 
     }
   };

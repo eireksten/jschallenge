@@ -1,9 +1,7 @@
-/*global CodeMirror */
-
 var challenge = challenge || {};
 challenge.view = challenge.view || {};
 
-challenge.view.problem = (function (codemirror) {
+challenge.view.problem = (function () {
   "use strict";
 
   var baseview = {
@@ -13,21 +11,8 @@ challenge.view.problem = (function (codemirror) {
     render: function () {
       this.$el.empty().html(challenge.templates.problemview({
         title: this.model.getTitle(),
-        description: this.model.getDescription(),
-        precode: this.model.getSolutionStart(),
-        postcode: this.model.getSolutionEnd()
+        description: this.model.getDescription()
       }));
-
-      this.$el.find('.editor').each(function () {
-        codemirror(this, {
-          value: "return 0;",
-          mode:  "javascript",
-          theme: "solarized light",
-          lineNumbers: true,
-          firstLineNumber: 2
-        });  
-      });
-
     }
   };
 
@@ -47,4 +32,4 @@ challenge.view.problem = (function (codemirror) {
     create: createView
   };
 
-}(CodeMirror));
+}());

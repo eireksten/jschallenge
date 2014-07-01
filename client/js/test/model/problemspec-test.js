@@ -8,12 +8,12 @@ describe('problemspec', function () {
     it('should set given parameters', function () {
       var prob = spec.create({
         title: 'Addition',
-        description: 'Add two numbers',
+        description: 'You are given two numbers as parameters to your function. Return the result of adding them.',
         func: 'addThem',
         parameters: ['x', 'y']
       });
       expect(prob.getTitle()).to.equal('Addition');
-      expect(prob.getDescription()).to.equal('Add two numbers');
+      expect(prob.getDescription()).to.equal('You are given two numbers as parameters to your function. Return the result of adding them.');
       expect(prob.getFunctionName()).to.equal('addThem');
       expect(prob.getParameterlist()).to.deep.equal(['x', 'y']);
 
