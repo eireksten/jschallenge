@@ -11,7 +11,7 @@ challenge.view.problem = (function (codemirror) {
       this.model = model;
     },
     render: function () {
-      this.$el.empty().html(challenge.templates.problem({
+      this.$el.empty().html(challenge.templates.problemview({
         title: this.model.getTitle(),
         description: this.model.getDescription(),
         precode: this.model.getSolutionStart(),
@@ -20,10 +20,11 @@ challenge.view.problem = (function (codemirror) {
 
       this.$el.find('.editor').each(function () {
         codemirror(this, {
-          value: "function myScript(){return 100;}\n",
+          value: "return 0;",
           mode:  "javascript",
           theme: "solarized light",
-          lineNumbers: true
+          lineNumbers: true,
+          firstLineNumber: 2
         });  
       });
 
