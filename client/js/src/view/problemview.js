@@ -10,8 +10,8 @@ challenge.view.problem = (function () {
     },
     render: function () {
       this.$el.empty().html(challenge.templates.problem({
-        title: this.model.getTitle(),
-        description: this.model.getDescription()
+        title: this.model.get('title'),
+        description: this.model.get('description')
       }));
     }
   };

@@ -6,35 +6,29 @@ challenge.model.problemspec = (function () {
 
   var baseproblem = {
     getSolutionStart: function () {
-      return 'function ' + this.getFunctionName() + '(' + this.getParameterlist().join(', ') + ') {';
+      return 'function ' + this.get('func') + '(' + this.get('parameters').join(', ') + ') {';
     },
     getSolutionEnd: function () {
       return '}';
-    },
-    getTitle: function () {
-      return this._attributes.title;
-    },
-    getDescription: function () {
-      return this._attributes.description;
-    },
-    getFunctionName: function () {
-      return this._attributes.func;
-    },
-    getParameterlist: function () {
-      return this._attributes.parameters.slice(0);
     }
   };
 
   var createProblem = function (args) {
 
     var prob = Object.create(baseproblem);
+    _.assign(prob, challenge.modelmixin);
 
-    prob._attributes = _.assign({
-      title: 'Mysterious Problem',
-      description: 'No description!',
-      func: 'solve',
-      parameters: []
-    }, args);
+    _.forOwn(
+      _.assign({
+        title: 'Mysterious Problem',
+        description: 'No description!',
+        func: 'solve',
+        parameters: []
+      }, args),
+      function (value, key) {
+        prob.set(key, value);
+      }
+    );
 
     return prob;
 

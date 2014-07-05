@@ -19,8 +19,8 @@ describe('problemview', function () {
       var view = problemview.create(prob);
       view.render();
 
-      expect(view.$el.find('.title').text()).to.contain(prob.getTitle());
-      expect(view.$el.find('.problemtext').text()).to.contain(prob.getDescription());
+      expect(view.$el.find('.title').text()).to.contain(prob.get('title'));
+      expect(view.$el.find('.problemtext').text()).to.contain(prob.get('description'));
 
     });
     

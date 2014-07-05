@@ -12,19 +12,19 @@ describe('problemspec', function () {
         func: 'addThem',
         parameters: ['x', 'y']
       });
-      expect(prob.getTitle()).to.equal('Addition');
-      expect(prob.getDescription()).to.equal('You are given two numbers as parameters to your function. Return the result of adding them.');
-      expect(prob.getFunctionName()).to.equal('addThem');
-      expect(prob.getParameterlist()).to.deep.equal(['x', 'y']);
+      expect(prob.get('title')).to.equal('Addition');
+      expect(prob.get('description')).to.equal('You are given two numbers as parameters to your function. Return the result of adding them.');
+      expect(prob.get('func')).to.equal('addThem');
+      expect(prob.get('parameters')).to.deep.equal(['x', 'y']);
 
     });
 
     it('should define default options', function () {
       var prob = spec.create();
-      expect(prob.getTitle()).to.equal('Mysterious Problem');
-      expect(prob.getDescription()).to.equal('No description!');
-      expect(prob.getFunctionName()).to.equal('solve');
-      expect(prob.getParameterlist()).to.deep.equal([]);
+      expect(prob.get('title')).to.equal('Mysterious Problem');
+      expect(prob.get('description')).to.equal('No description!');
+      expect(prob.get('func')).to.equal('solve');
+      expect(prob.get('parameters')).to.deep.equal([]);
     });
 
   });
